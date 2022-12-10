@@ -1,0 +1,36 @@
+Instrucciones para iniciar el proyecto.
+----------------------------------
+Crear el entorno de trabajo.
+python -m venv env
+----------------------------------
+Instalar Django
+pip install Django
+piplist
+---------------------------------------------------
+Creando el proyecto Django
+django-admin startproject backendPILFinal
+---------------------------------------------------------
+Iniciando el servidor del proyecto
+.\manage.py run
+--------------------------------------------------------------------------------
+Instalando django restFramework
+pip install djangorestframework
+----------------------------------------------------------------
+Creando la base de datos desde el SGBD (Mysql).
+CREATE DATABASE PilFinalDB; 
+------------------------------------------------------------------
+Instalando el modulo que hace posible la conexión con la base de datos.
+pip install mysqlClient
+---------------------------------------------------------------------
+Aplicando las migraciones.
+python.exe manage.py migrate  
+---------------------------------------------------------------------
+Creando aplicaciones
+python manage.py startapp Users
+--------------------------------------------------------------------
+Haciendo la migracion de Users
+python.exe manage.py makemigrations
+--------------------------------------------------------------------
+Creando un usuario nuevo en Django admin
+python manage.py createsuperuser
+>Seguir los pasos que te indica.

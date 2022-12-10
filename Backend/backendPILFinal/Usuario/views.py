@@ -1,3 +1,112 @@
-from django.shortcuts import render
+#Django RestFramework
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+#Models imports
+from Usuario.models import Usuario
+
+#Serializer Imports
+from Usuario.serializer import UsuarioSerial
+
+#Helpers
+from Usuario.helpers.usuarioError import hayUsuario
 
 # Create your views here.
+class UsuarioApiVIew(APIView):
+
+    #Retorna una lista con todos los usuarios almacenados.
+    def get(self,request):
+        #Base de datos, recibe todos los usuarios de la base de datos.
+        Usuarios = Usuario.objects.all()
+        
+        UsuariosSerial= UsuarioSerial(Usuarios, many =True) #Hace la conversion de un objeto a Json.
+
+        return Response(
+            data = UsuariosSerial.data,
+            status=status.HTTP_200_OK
+        )
+
+class CreateAPIView(APIView):
+        
+        
+    def post(self,request):
+        #Crea un nuevo registro /usuario
+        print("ESTAMOS EN UN METODO POST")
+
+        serialazer = UsuarioSerial(data=request.data, many =True) #Many permite crear varios usuario al mismo tiempo
+
+        if(serialazer.is_valid()):
+            serialazer.save()
+
+            data = {
+                    'menssage' : 'el usuario fue creado con exito'
+                }
+            return Response(
+                data=data,
+                status = status.HTTP_201_CREATED
+            )
+            
+        return Response(
+            data = serialazer.errors,
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+class UsuarioDetailsAPIView(APIView):
+    
+    def get(self,request,pk):
+
+
+        try:
+            Usuarios= Usuario.objects.get(pk=pk)
+
+            UsuarioSerial= UsuarioSerial(Usuarios) 
+
+            return Response(
+                data = UsuarioSerial.data,
+                status = status.HTTP_200_OK
+            )
+        except:
+           data = {
+                'menssage' : 'Usuario no encontrado'
+            } 
+
+        return Response(
+            data = data,
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    def put(self,request,pk):
+        Usuario= hayUsuario(pk)
+        if(Usuario[0]):
+            UsuarioSerial= UsuarioSerial(Usuario[1], data=request.data) 
+
+            if(UsuarioSerial.is_valid()):
+                UsuarioSerial.save()
+            
+            data = {
+                    'menssage' : 'el usuario fue modificado con exito'
+                } 
+
+            return Response(
+                data = UsuarioSerial.data,
+                status = status.HTTP_200_OK
+            )
+        return Response(
+            data = UsuarioSerial.errors,
+            status = status.HTTP_400_BAD_REQUEST
+        ) 
+
+    def delete(self,request,pk):
+        usuarios= Usuario.objects.get(pk=pk)
+        
+        usuarios.delete()
+
+        data = {
+                'menssage' : 'el usuario fue eliminado de forma correcta'
+            } 
+        
+        return Response(
+            data = data,
+            status = status.HTTP_200_OK
+        )

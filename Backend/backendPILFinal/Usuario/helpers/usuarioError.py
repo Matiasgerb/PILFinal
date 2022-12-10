@@ -3,7 +3,7 @@ from Usuario.models import Usuario
 def hayUsuario(pk):
 
     try:
-        usuario = Usuario.objects.get(pk=pk)
+        usuario = Usuario.objects.get(idUsuario=pk)
 
         return [True,usuario]
     except:

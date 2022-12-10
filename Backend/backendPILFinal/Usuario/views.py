@@ -26,15 +26,19 @@ class UsuarioApiVIew(APIView):
             data = UsuariosSerial.data,
             status=status.HTTP_200_OK
         )
+   
 
-class CreateAPIView(APIView):
-        
-        
-    def post(self,request):
+
+class CreateApiView(APIView):
+   def post(self,request):
         #Crea un nuevo registro /usuario
         print("ESTAMOS EN UN METODO POST")
+        
 
-        serialazer = UsuarioSerial(data=request.data, many =True) #Many permite crear varios usuario al mismo tiempo
+
+        serialazer = UsuarioSerial(data=request.data, many=True) #Many permite crear varios usuario al mismo tiempo
+        print(serialazer)
+
 
         if(serialazer.is_valid()):
             serialazer.save()
@@ -52,18 +56,24 @@ class CreateAPIView(APIView):
             status = status.HTTP_400_BAD_REQUEST
         )
 
+
+
+
+
+
+
 class UsuarioDetailsAPIView(APIView):
     
     def get(self,request,pk):
 
 
         try:
-            Usuarios= Usuario.objects.get(pk=pk)
+            Usuarios= Usuario.objects.get(idUsuario=pk)
 
-            UsuarioSerial= UsuarioSerial(Usuarios) 
+            UsuarioSerialize= UsuarioSerial(Usuarios) 
 
             return Response(
-                data = UsuarioSerial.data,
+                data = UsuarioSerialize.data,
                 status = status.HTTP_200_OK
             )
         except:
@@ -79,26 +89,26 @@ class UsuarioDetailsAPIView(APIView):
     def put(self,request,pk):
         Usuario= hayUsuario(pk)
         if(Usuario[0]):
-            UsuarioSerial= UsuarioSerial(Usuario[1], data=request.data) 
+            UsuarioSerialize= UsuarioSerial(Usuario[1], data=request.data) 
 
-            if(UsuarioSerial.is_valid()):
-                UsuarioSerial.save()
+            if(UsuarioSerialize.is_valid()):
+                UsuarioSerialize.save()
             
             data = {
                     'menssage' : 'el usuario fue modificado con exito'
                 } 
 
             return Response(
-                data = UsuarioSerial.data,
+                data = UsuarioSerialize.data,
                 status = status.HTTP_200_OK
             )
         return Response(
-            data = UsuarioSerial.errors,
+            data = UsuarioSerialize.errors,
             status = status.HTTP_400_BAD_REQUEST
         ) 
 
     def delete(self,request,pk):
-        usuarios= Usuario.objects.get(pk=pk)
+        usuarios= Usuario.objects.get(idUsuario=pk)
         
         usuarios.delete()
 

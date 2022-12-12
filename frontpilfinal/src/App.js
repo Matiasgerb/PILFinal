@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import UsuariosForm from '../src/componentes/Usuario/UsuariosForm'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

@@ -34,3 +34,5 @@ python.exe manage.py makemigrations
 Creando un usuario nuevo en Django admin
 python manage.py createsuperuser
 >Seguir los pasos que te indica.
+--------------------------------
+npm install react-router-dom --save

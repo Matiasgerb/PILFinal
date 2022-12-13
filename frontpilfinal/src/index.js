@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route   } from "react-router-dom";
 import UsuariosForm from './componentes/Usuario/UsuariosForm';
 import UsuarioList from './componentes/Usuario/UsuarioList';
 import Navbar from './componentes/Navbar/Navbar';
+import Home from './componentes/Home/home';
 
 
 
@@ -28,9 +29,9 @@ root.render(
         {/* SIEMPRE DEBE ESTAR DENTRO DEL BROWSER-ROUTER O ROUTES */}
           <div className="conteiner my-4">
             <Routes>
-              <Route exact path="/" element={<App />} />
-              <Route path="/UsuariosForm" element={<UsuariosForm />} />
-              <Route path='/usuario-list' element={<UsuarioList /> } />
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/UsuariosForm" element={<UsuariosForm />} />
+              <Route exact path='/usuario-list' element={<UsuarioList /> } />
             </Routes>
           </div>
       </BrowserRouter>

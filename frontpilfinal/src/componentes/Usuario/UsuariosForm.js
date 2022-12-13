@@ -3,7 +3,7 @@ import * as UsuarioServer from './UsuarioServer';
 import {useParams,useNavigate } from "react-router-dom";
 
 
-const Usuario = () => {
+const UsuarioForm = () => {
 
     //Variable del componente
     const history = useNavigate();
@@ -14,26 +14,58 @@ const Usuario = () => {
 
     const initialState = { //Se inicializa un usuario en base al modelo del backend.
         idUsuario: 0,
-        email:'',
-        password:'',
-        userName:'',
-        nombre:'',
-        apellido:'',
-        token:''
+        email:'example@email.com',
+        password:'contraseña',
+        userName:'Usuario',
+        nombre:'Nombre',
+        apellido:'Apellido',
+        token:'Token'
     };
 
-    const [usuario, setUsuario] = useState(initialState); //se almacena los datos de la inicialización dentro de una variable tipo objeto.
+    const [usuario, setUsuario] = useState([initialState]); //se almacena los datos de la inicialización dentro de una variable tipo objeto.
 
+
+    const handleInputChange = (e) => {
+        // OBSERVAR FUNCIONAMIENTO CON LOS CONSOLE.LOG()
+        // console.log(e.target.name);
+        // console.log(e.target.value);
+        //ESTA LINEA CAPTURA LOS VALORES DEL INPUT, LOS GUARDA EN USUARIO Y RENDERIZA EN EL INPUT
+        setUsuario({ ...usuario, [e.target.name]: e.target.value });
+      };
+    
+        //POST
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Podemos ver como se crea el nuevo usuario en un json
+        //  console.log(usuario);
+        try {
+          let res;
+          if (!params.idUsuario) {
+            res = await UsuarioServer.registrarUsuario(usuario);
+            // console.log("RES: ", res);
+            const data = await res.json();
+            console.log("Data: ",data);
+            if (data.idUsuario != 0) {
+              setUsuario(initialState);
+            }
+          } else {
+            // await UsuarioServer.updateUsuario(params.id, usuario);
+          }
+           history("/");
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 
 
     //Funcion para obtener nuestro usuario
 
-    const getUsuario = async () => {
+    const getUsuario = async (usuarioId) => {
 
         try{
 
-            const res = await UsuarioServer.getUsuario();
+            const res = await UsuarioServer.getUsuario(usuarioId);
             const data = await res.json();
             const {idUsuario,email,password,userName,nombre,apellido,token} = data.usuario;
             
@@ -45,17 +77,19 @@ const Usuario = () => {
 
     }
 
-    const handleInputChange = (e) =>{
-        setUsuario({...usuario, [e.target.name]: e.target.value}); //captura la informacion del input y lo almacena en un objeto "Usuario"
-        console.log(usuario);
-    }
+  
+
+  
 
 
 
     //Efecto
-    useEffect(()=>{
-
-    },[]);
+    useEffect(() => {
+        if (params.idUsuario) {
+          getUsuario(params.idUsuario);
+        }
+        // eslint-disable-next-line
+      }, []);
 
     //Render o HTML o Return
 
@@ -63,7 +97,7 @@ const Usuario = () => {
         <div>
             <div className="col-md-3 mx-auto">
                 <h2 className="mb-3 text-center">Usuario</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-8">
 
                         <label className="form-labe col-12"> idUsuario </label>
@@ -93,7 +127,7 @@ const Usuario = () => {
                     </div>
                          <div className="row">
                             <div className="d-grid gap-2">
-                                {params.id ? (
+                                {params.idUsuario ? (
                                 <button type="submit" className="btn btn-block btn-primary mb-12">
                                     Update
                                 </button>
@@ -109,6 +143,6 @@ const Usuario = () => {
             </div>
         </div>
     );
-};
+    };
 
-export default Usuario;
+export default UsuarioForm;

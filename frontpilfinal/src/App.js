@@ -8,8 +8,8 @@ import ListUsuarios from './componentes/Usuario/UsuarioList';
 function App() {
   return (
       <div className='conteiner'>
-          <ListUsuarios></ListUsuarios>
-
+         
+           <h1>Bienvenido!</h1>
       </div>
   );
 }

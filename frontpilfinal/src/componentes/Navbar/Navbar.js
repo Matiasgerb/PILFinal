@@ -23,12 +23,12 @@ const Navbar=()=>{
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/UsuariosForm">
-                    Agregar Usuario
+                    Add User
                     </Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/Usuario-list">
-                    Listar Usuarios
+                    User List
                     </Link>
                 </li>
                 </ul>

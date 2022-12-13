@@ -36,7 +36,7 @@ class CreateApiView(APIView):
         
 
 
-        serialazer = UsuarioSerial(data=request.data, many=True) #Many permite crear varios usuario al mismo tiempo
+        serialazer = UsuarioSerial(data=request.data) #Many permite crear varios usuario al mismo tiempo
         print(serialazer)
 
 

@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route   } from "react-router-dom";
 
 //componentes propios
 import UsuariosForm from './componentes/Usuario/UsuariosForm';
+import UsuarioList from './componentes/Usuario/UsuarioList';
 import Navbar from './componentes/Navbar/Navbar';
 
 
@@ -21,7 +22,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <>
   {/* <Navbar> */}
-
+  
   <BrowserRouter>
     <Navbar></Navbar> 
         {/* SIEMPRE DEBE ESTAR DENTRO DEL BROWSER-ROUTER O ROUTES */}
@@ -29,8 +30,7 @@ root.render(
             <Routes>
               <Route exact path="/" element={<App />} />
               <Route path="/UsuariosForm" element={<UsuariosForm />} />
-              {/* <Route path="/heroes-batallas" element={<HeroesForm />} /> */}
-              {/* <Route path="/login" element={<LoginForm/>} /> */}
+              <Route path='/usuario-list' element={<UsuarioList /> } />
             </Routes>
           </div>
       </BrowserRouter>

@@ -36,3 +36,8 @@ python manage.py createsuperuser
 >Seguir los pasos que te indica.
 --------------------------------
 npm install react-router-dom --save
+-----------------------------------------
+npm install react-data-table-component
+-----------------------------------------
+FIX error CORS policy
+pip install django-cors-headers

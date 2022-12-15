@@ -27,6 +27,19 @@ const UsuarioList= () => {
             console.log(error);
         }
     }
+    const eliminarUser = async (idUsuario) =>{
+
+        await UsuarioServer.eliminarUsuario(idUsuario);
+        ListUsuarios();
+    }
+    const handleInputChange = (e) => {
+        // OBSERVAR FUNCIONAMIENTO CON LOS CONSOLE.LOG()
+        // console.log(e.target.name);
+        // console.log(e.target.value);
+        //ESTA LINEA CAPTURA LOS VALORES DEL INPUT, LOS GUARDA EN USUARIO Y RENDERIZA EN EL INPUT
+        setUsuario({ ...usuarios, [e.target.name]: e.target.value });
+      };
+
 
     useEffect(()=>{
         //instanciamos la funcionar listUsuarios
@@ -83,7 +96,15 @@ const UsuarioList= () => {
 
              <div className="col-md-10 mb-10 my-2">
                         <DataTable columns={columns} data={usuarios} buttons={buttons}/>
-                </div>        
+                </div> 
+                <div className="containerDEL">                
+                    <label className="form-labe col-12"> idUsuario </label>
+                    <input type='number' name='idUsuario' id='idUsuario' value={usuarios.idUsuario} onChange={handleInputChange}></input> 
+                    <button onClick={() => usuarios.idUsuario && eliminarUser(usuarios.idUsuario)} className="btn btn-danger my-2">
+                        Delete User
+                </button>
+                </div>
+
         </div>
     )
    

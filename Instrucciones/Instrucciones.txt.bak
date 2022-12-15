@@ -38,3 +38,9 @@ python manage.py createsuperuser
 npm install react-router-dom --save
 -----------------------------------------
 npm install react-data-table-component
+-----------------------------------------
+FIX error CORS policy
+pip install django-cors-headers
+
+_-----------install react select--------------
+npm i --save react-select

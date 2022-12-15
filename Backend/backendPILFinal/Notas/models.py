@@ -27,7 +27,7 @@ class Notas(models.Model):
         verbose_name='Estado'
     )
     fechCreacion = models.DateField(
-
+        
     )
     fechCierre = models.DateField(
 

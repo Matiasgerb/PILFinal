@@ -32,7 +32,7 @@ class CreateApiView(APIView):
    def post(self,request):
         #Crea un nuevo registro /Notas
         
-        serialazer = NotasSerial(data=request.data, many=True) #Many permite crear varios usuario al mismo tiempo
+        serialazer = NotasSerial(data=request.data) #Many permite crear varios usuario al mismo tiempo
         print(serialazer)
 
 

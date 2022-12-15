@@ -107,8 +107,13 @@ class UsuarioDetailsAPIView(APIView):
             status = status.HTTP_400_BAD_REQUEST
         ) 
 
+
+
+class delAPIView(APIView):
     def delete(self,request,pk):
         usuarios= Usuario.objects.get(idUsuario=pk)
+
+       
         
         usuarios.delete()
 

@@ -127,15 +127,11 @@ const UsuarioForm = () => {
                     </div>
                          <div className="row">
                             <div className="d-grid gap-2">
-                                {params.idUsuario ? (
-                                <button type="submit" className="btn btn-block btn-primary mb-12">
-                                    Update
-                                </button>
-                                ) : (
+                                
                                 <button type="submit" className="btn btn-block btn-success mb-12">
                                     Register
                                 </button>
-                                )}
+                                
                         </div> 
                     </div>
                 </form>

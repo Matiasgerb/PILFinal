@@ -34,6 +34,10 @@ python.exe manage.py makemigrations
 Creando un usuario nuevo en Django admin
 python manage.py createsuperuser
 >Seguir los pasos que te indica.
+------------------------------------------------------------------
+Instalar NodeJs - Bootstrap
+
+Iniciar el servidor local de Node <npm start>
 --------------------------------
 npm install react-router-dom --save
 -----------------------------------------
@@ -41,3 +45,26 @@ npm install react-data-table-component
 -----------------------------------------
 FIX error CORS policy
 pip install django-cors-headers
+
+_-----------install react select--------------
+npm i --save react-select
+
+npm install react-datepicker --save
+
+
+*Dependencias
+   "@popperjs/core": "^2.11.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.1",
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-data-table-component": "^7.5.3",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.5",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.7.0",
+    "web-vitals": "^2.1.4"
+    *

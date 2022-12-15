@@ -30,11 +30,30 @@ const Navbar=()=>{
                     <Link className="nav-link" to="/Usuario-list">
                     User List
                     </Link>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/Notas-list">
+                    Notas List
+                    </Link>
                 </li>
+                    
+                </li>
+                    <Link className="nav-link" to="/NotasForm">
+                    Add Notas
+                    </Link>
                 </ul>
+                
             </div>
             </div>
         </nav>
+
+
+
+
+
+
+
+
+        
     );
 
 }

@@ -10,10 +10,15 @@ import { BrowserRouter, Routes, Route   } from "react-router-dom";
 
 
 //componentes propios
+//Usuarios
 import UsuariosForm from './componentes/Usuario/UsuariosForm';
 import UsuarioList from './componentes/Usuario/UsuarioList';
 import Navbar from './componentes/Navbar/Navbar';
 import Home from './componentes/Home/home';
+//Notas
+import NotasForm from './componentes/Notas/NotasForm';
+import NotasList from './componentes/Notas/NotasList';
+
 
 
 
@@ -32,7 +37,12 @@ root.render(
               <Route exact path="/" element={<Home />} />
               <Route exact path="/UsuariosForm" element={<UsuariosForm />} />
               <Route exact path='/usuario-list' element={<UsuarioList /> } />
+              <Route exact path='/usuario-delete/:idUsuario' element={<UsuarioList /> } />
+              <Route exact path="/NotasForm" element={<NotasForm />} />
+              <Route exact path='/notas-list' element={<NotasList /> } />
+
             </Routes>
+            
           </div>
       </BrowserRouter>
   </>

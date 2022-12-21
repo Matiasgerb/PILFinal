@@ -25,15 +25,27 @@ const NotasForm = () => {
     };
 
     const [nota, setNotas] = useState([initialState]); //se almacena los datos de la inicialización dentro de una variable tipo objeto.
-
+   
 
     const handleInputChange = (e) => {
       
         //ESTA LINEA CAPTURA LOS VALORES DEL INPUT, LOS GUARDA EN NOTA Y RENDERIZA EN EL INPUT
         setNotas({ ...nota, [e.target.name]: e.target.value });
       };
-    
+      
+     
+    const handleDatePickerCreacion = (e) => {
 
+      setNotas({ ...nota, fechCreacion: e.target.value });
+      console.log(e)
+
+    }
+    const handleDatePickerCierre = (e) => {
+
+      setNotas({ ...nota, fechCierre: e.target.value });
+      console.log(e);
+
+    }
       const handleInputSelectEstado = (e) =>{
         // console.log(e);
        setNotas({ ...nota, estado: e.value});
@@ -41,6 +53,8 @@ const NotasForm = () => {
 
 
    }
+
+   
 
 
         //POST
@@ -118,9 +132,9 @@ const NotasForm = () => {
                         <label className="form-label col-12"> Titulo: </label>
                         <input type='text' name='Titulo' id='Titulo' value={nota.idTitulo} onChange={handleInputChange}></input>
 
-                        <label className="form-label col-12"> Descripción: </label>
+                        <label className="form-label col-12"> Descripcion: </label>
                         
-                        <textarea class="form-control" id="descripcion" rows="3"  value={nota.descrip} onChange={handleInputChange}></textarea>
+                        <textarea type='text' name='descrip' id='descrip' value={nota.descrip} onChange={handleInputChange}></textarea>
 
                         <label className="form-label col-12"> Estado: </label>
                         <Select id="estado" name="estado" className="form-control"
@@ -133,13 +147,13 @@ const NotasForm = () => {
                       
 
                         <label className="form-label col-12 "> Fecha Creacion:</label>
-                        <input type='date' dateformat='YYYY MMMM DD' name='fechCreacion' id='fechCreacion' value={nota.fechCreacion} onChange={handleInputChange}></input>
+                        <input type='date' name='fechCreacion' id='fechCreacion' value={nota.fechCreacion} onChange={handleDatePickerCreacion} ></input>
                         
                      
 
 
                         <label className="form-label col-12 "> Fecha Cierre: </label>
-                        <input type='date' dateformat='YYYY MMMM DD' name='fechCierre' id='fechCierre' value={nota.fechCierre} onChange={handleInputChange}></input>
+                        <input type='date' name='fechCierre' id='fechCierre' value={nota.fechCierre} onChange={handleDatePickerCierre} ></input>
 
                         <label className="form-label col-12"> idUsuario: </label>
                         <input type='number' name='idUsuario' id='idUsuario' value={nota.idUsuario} onChange={handleInputChange}></input>
@@ -157,7 +171,7 @@ const NotasForm = () => {
                               
                         </div> 
                     </div>
-                </form>
+              </form>
 
             </div>
         </div>

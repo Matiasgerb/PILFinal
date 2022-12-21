@@ -58,7 +58,11 @@ const NotasList= () => {
         },
         {
             name: "Titulo",
-            selector: row => row.titulo
+            selector: row => row.Titulo
+        },
+        {
+            name: "Descripcion",
+            selector: row => row.descrip
         },
         {
             name: "Estado",
@@ -90,7 +94,7 @@ const NotasList= () => {
     return(
         <div className="container">
 
-             <div className="col-md-10 mb-10 my-2">
+             <div className="col-md-20 mb-10 my-2">
                         <DataTable columns={columns} data={nota} buttons={buttons}/>
                 </div> 
 

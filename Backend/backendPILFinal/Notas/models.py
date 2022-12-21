@@ -4,6 +4,8 @@ from Usuario.models import Usuario
 # Create your models here.
 
 class Notas(models.Model):
+
+    
     #Opciones
     estados = (
         ('1','Aprobado'),

@@ -15,6 +15,7 @@ export const listarNotas = async () => {
     
 };
 export const registrarNotas= async (newNotas) => {
+    
     return await fetch(URL_NOTASREGISTER,{
         // metodos doc: https://www.w3schools.com/tags/ref_httpmethods.asp || doc: https://openjavascript.info/2022/01/03/using-fetch-to-make-get-post-put-and-delete-requests/
         method: 'POST',
@@ -25,10 +26,10 @@ export const registrarNotas= async (newNotas) => {
         body: JSON.stringify({
             "idNotas": Number(newNotas.idNotas),
             "Titulo": String(newNotas.Titulo).trim(),
-            "descrip": String(newNotas.descrip).trim(),
+            "descrip": (newNotas.descrip),
             "estado": Number(newNotas.estado),
-            "fechCreacion": Date(newNotas.fechCreacion).trim(),
-            "fechCierre": Date(newNotas.fechCierre).trim(),
+            "fechCreacion": (newNotas.fechCreacion),
+            "fechCierre": (newNotas.fechCierre),
             "idUsuario": Number(newNotas.idUsuario),
          
         })
@@ -45,10 +46,10 @@ export const actualizarNota = async (notasActu) => {
         body: JSON.stringify({
             "idNotas": Number(notasActu.idNotas),
             "Titulo": String(notasActu.Titulo).trim(),
-            "descrip": String(notasActu.descrip).trim(),
+            "descrip": (notasActu.descrip),
             "estado": Number(notasActu.estado),
-            "fechCreacion": Date(notasActu.fechCreacion).trim(),
-            "fechCierre": Date(notasActu.fechCierre).trim(),
+            "fechCreacion": (notasActu.fechCreacion),
+            "fechCierre": (notasActu.fechCierre),
             "idUsuario": Number(notasActu.idUsuario),
         })
     };
